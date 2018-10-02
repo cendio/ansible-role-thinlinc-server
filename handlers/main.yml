@@ -1,0 +1,10 @@
+---
+# handlers file for thinlinc-server
+- name: restart vsmagent
+  service: name=vsmagent state=restarted
+
+- name: restart vsmserver
+  service: name=vsmserver state=restarted
+
+- name: run tl-setup
+  command: /opt/thinlinc/sbin/tl-setup -a "/root/thinlinc-setup.answers"

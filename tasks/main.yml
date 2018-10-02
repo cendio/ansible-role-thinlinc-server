@@ -1,0 +1,69 @@
+---
+
+- name: Installing pre-requisites
+  package:
+    name: unzip
+    state: present
+
+- name: Checking for installed ThinLinc packages
+  block:
+    - include_tasks: "check_installed_rpm.yml"
+      when: ansible_os_family in ["RedHat", "Suse"]
+    - include_tasks: "check_installed_deb.yml"
+      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+
+- name: Installing ThinLinc packages
+  block:
+    - name: Unpacking ThinLinc server bundle
+      unarchive:
+        src: "{{ thinlinc_server_bundle }}"
+        dest: /root
+    - include_vars: "packages-rpm-{{ ansible_architecture }}.yml"
+      when: ansible_os_family in ["RedHat", "Suse"]
+    - include_vars: "packages-deb-{{ ansible_architecture }}.yml"
+      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+    - include_tasks: "install-thinlinc-rhel.yml"
+      when: ansible_os_family == "RedHat"
+    - include_tasks: "install-thinlinc-suse.yml"
+      when: ansible_os_family == "Suse"
+    - include_tasks: "install-thinlinc-debian.yml"
+      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+  when: thinlinc_packages_installed.rc == 1
+
+
+- name: Copy in tlsetup.answers
+  template:
+    src: thinlinc-setup.answers.j2
+    dest: /root/thinlinc-setup.answers
+  notify: run tl-setup
+
+# Force tl-setup to run here, if required
+- meta: flush_handlers
+
+- name: Configure /vsmagent/agent_hostname
+  tlconfig:
+    param: /vsmagent/agent_hostname
+    value: "{{ ansible_fqdn }}"
+  notify: restart vsmagent
+  when: "'thinlinc-agents' in group_names"
+
+- name: Configure /vsmagent/master_hostname
+  tlconfig:
+    param: /vsmagent/master_hostname
+    value: "{{ groups['thinlinc-masters'][0] or 'localhost' }}"
+  notify: restart vsmagent
+  when: "'thinlinc-agents' in group_names"
+
+- name: Configure /vsmagent/allowed_clients
+  tlconfig:
+    param: /vsmagent/allowed_clients
+    value: "{{ ' '.join(groups['thinlinc-masters']) or 'localhost' }}"
+  notify: restart vsmagent
+  when: "'thinlinc-agents' in group_names"
+
+- name: Configure list of agent servers
+  tlconfig:
+    param: /vsmserver/terminalservers
+    value: "{{ ' '.join(groups['thinlinc-agents']) or 'localhost' }}"
+  notify: restart vsmserver
+  when: "'thinlinc-masters' in group_names"

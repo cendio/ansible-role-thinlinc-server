@@ -1,0 +1,5 @@
+---
+- name: Install ThinLinc Software
+  zypper: name="{{ item }}" state=present
+  with_items: "{{ thinlinc_packages }}"
+  notify: run tl-setup

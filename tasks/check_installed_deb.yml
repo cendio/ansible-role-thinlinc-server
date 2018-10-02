@@ -1,0 +1,9 @@
+---
+- name: Checking whether ThinLinc is installed
+  command: "/usr/bin/dpkg-query --list thinlinc-vsm"
+  args:
+    warn: False
+  register: thinlinc_packages_installed
+  failed_when: ( thinlinc_packages_installed.rc not in [0, 1] )
+  changed_when: False
+#  ignore_errors: yes

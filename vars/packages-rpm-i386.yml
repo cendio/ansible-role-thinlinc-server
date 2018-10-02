@@ -1,0 +1,10 @@
+---
+thinlinc_packages:
+  - "{{ pkgdir }}/thinlinc-rdesktop-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
+  - "{{ pkgdir }}/thinlinc-tladm-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
+  - "{{ pkgdir }}/thinlinc-tlmisc-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
+  - "{{ pkgdir }}/thinlinc-tlmisc-libs32-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
+  - "{{ pkgdir }}/thinlinc-tlprinter-{{ thinlinc_version }}-{{ thinlinc_build }}.noarch.rpm"
+  - "{{ pkgdir }}/thinlinc-webaccess-{{ thinlinc_version }}-{{ thinlinc_build }}.noarch.rpm"
+  - "{{ pkgdir }}/thinlinc-vnc-server-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
+  - "{{ pkgdir }}/thinlinc-vsm-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"

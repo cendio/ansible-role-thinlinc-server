@@ -1,0 +1,29 @@
+galaxy_info:
+  author: Karl Mikaelsson
+  description: your description
+  company: Cendio AB
+  license: GPLv3
+
+  min_ansible_version: 2.0
+  # min_ansible_container_version:
+  # github_branch:
+
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: SLES
+      versions:
+        - 12
+        - 12SP1
+    - name: Debian
+      versions:
+        - stretch
+    - name: Ubuntu
+      versions:
+        - bionic
+
+
+  galaxy_tags: []
+
+dependencies: []

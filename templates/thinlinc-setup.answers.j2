@@ -1,0 +1,22 @@
+# {{ ansible_managed }}
+install-pygtk={{ thinlinc_autoinstall_dependencies }}
+email-address={{ thinlinc_email }}
+install-python-ldap={{ thinlinc_autoinstall_dependencies }}
+setup-firewall=yes
+setup-selinux=yes
+setup-web-integration=yes
+setup-apparmor=yes
+{% if ansible_fqdn in groups['thinlinc-masters'] %}
+server-type=master
+{% else %}
+server-type=agent
+{% endif %}
+missing-answer=abort
+install-nfs={{ thinlinc_autoinstall_dependencies }}
+install-sshd={{ thinlinc_autoinstall_dependencies }}
+accept-eula={{ thinlinc_accept_eula }}
+migrate-conf={{ thinlinc_tlsetup_migrate_conf }}
+install-required-libs={{ thinlinc_autoinstall_dependencies }}
+setup-nearest={{ thinlinc_printers }}
+setup-thinlocal={{ thinlinc_printers }}
+tlwebadm-password={{ thinlinc_webadm_password }}
