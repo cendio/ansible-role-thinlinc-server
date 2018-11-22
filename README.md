@@ -2,7 +2,8 @@ ThinLinc Server
 ===============
 
 This role takes care of installing, configuring and starting the
-ThinLinc Server software.
+ThinLinc server software. The ThinLinc server software is not included
+in this role, and will have to be obtained separately.
 
 
 License
@@ -67,19 +68,27 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 ```
 
 ThinLinc Web Administration password. This default password is
-"thinlinc". Generate new hashes with /opt/thinlinc/sbin/tl-gen-auth.
+"thinlinc". Generate new hashes with `/opt/thinlinc/sbin/tl-gen-auth`.
 
 
-Dependencies
-------------
+Examples
+--------
 
-No external Ansible dependencies.
+This role can be installed through ansible-galaxy with a
+`requirements.yml` file. Run `ansible-galaxy install -r
+requirements.yml` to install the role:
 
+```yml
+---
+- src: https:///github.com/cendio/ansible-role-thinlinc-server.git
+  scm: git
+  name: thinlinc-server
+  version: v1.0
+```
 
-Example Playbook
-----------------
-
-Example inventory file:
+The role uses three groups - thinlinc-masters, thinlinc-agents and
+thinlinc-servers. Here's an example inventory file with one master
+server and three agent servers:
 
 ```yaml
 [thinlinc-masters]
@@ -95,10 +104,16 @@ thinlinc-masters
 thinlinc-agents
 ```
 
-Example playbook:
+Now that we got both a role and an inventory, connect the dots by
+applying the thinlinc-server role to the thinlinc-servers group with a
+`thinlinc.yml` playbook:
 
 ```yaml
 - hosts: thinlinc-servers
   roles:
     - { role: thinlinc-server, thinlinc_accept_eula: "yes" }
 ```
+
+The final step is to apply the playbook to the inventory, like this:
+
+`ansible -i inventory thinlinc.yml`
