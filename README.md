@@ -116,4 +116,4 @@ applying the thinlinc-server role to the thinlinc-servers group with a
 
 The final step is to apply the playbook to the inventory, like this:
 
-`ansible -i inventory thinlinc.yml`
+`ansible-playbook -i inventory thinlinc.yml`
