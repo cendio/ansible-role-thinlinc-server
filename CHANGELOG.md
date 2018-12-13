@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [1.1] - 2018-12-13
+
 ### Added
 
 - `thinlinc_agent_hostname`, a variable that allows you to customize
@@ -20,5 +22,6 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.0...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.1...HEAD
+[1.1]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.0...v1.1
 [1.0]: https://github.com/cendio/ansible-role-thinlinc-server/compare/...v1.0
