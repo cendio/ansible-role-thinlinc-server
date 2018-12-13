@@ -70,6 +70,17 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 ThinLinc Web Administration password. This default password is
 "thinlinc". Generate new hashes with `/opt/thinlinc/sbin/tl-gen-auth`.
 
+```yaml
+thinlinc_agent_hostname: null
+```
+
+This allows you to modify the hostname reported by the agent server to
+the client on connecting. See [ThinLinc in a NAT/Split-DNS
+Environment](https://www.cendio.com/resources/docs/tag/network.html#network_nat)
+for details. 
+
+Setting `thinlinc_agent_hostname` to null sets this parameter to `ansible_fqdn`.
+
 
 Examples
 --------

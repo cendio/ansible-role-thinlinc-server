@@ -21,3 +21,12 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 #  - new: overwrite all local changes with new defaults
 #  - parameters: auto-migrate old to new configuration
 thinlinc_tlsetup_migrate_conf: "old"
+
+
+# The agent hostname to report to clients. If your server is behind a
+# firewall with NAT, this must be set to an address that forwards to
+# your server. See
+# https://www.cendio.com/resources/docs/tag/network.html#network_nat
+#
+# The default value is null, which is equal to ansible_fqdn.
+thinlinc_agent_hostname: null
