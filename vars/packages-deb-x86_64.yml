@@ -1,6 +1,5 @@
 ---
 thinlinc_packages:
-  - "{{ pkgdir }}/thinlinc-rdesktop_{{ thinlinc_version }}-{{ thinlinc_build }}_amd64.deb"
   - "{{ pkgdir }}/thinlinc-tladm_{{ thinlinc_version }}-{{ thinlinc_build }}_amd64.deb"
   - "{{ pkgdir }}/thinlinc-tlmisc_{{ thinlinc_version }}-{{ thinlinc_build }}_amd64.deb"
   - "{{ pkgdir }}/thinlinc-tlmisc-libs32_{{ thinlinc_version }}-{{ thinlinc_build }}_amd64.deb"
