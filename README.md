@@ -97,7 +97,7 @@ requirements.yml` to install the role:
   version: v1.1
 ```
 
-The role uses three groups - thinlinc-masters, thinlinc-agents and
+The role uses three groups - thinlinc_masters, thinlinc_agents and
 thinlinc-servers. Here's an example inventory file with one master
 server and three agent servers:
 
@@ -116,11 +116,11 @@ thinlinc_agents
 ```
 
 Now that we got both a role and an inventory, connect the dots by
-applying the thinlinc-server role to the thinlinc-servers group with a
+applying the thinlinc-server role to the thinlinc_servers group with a
 `thinlinc.yml` playbook:
 
 ```yaml
-- hosts: thinlinc-servers
+- hosts: thinlinc_servers
   roles:
     - { role: thinlinc-server, thinlinc_accept_eula: "yes" }
 ```
