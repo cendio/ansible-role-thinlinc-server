@@ -6,7 +6,7 @@ setup-firewall=yes
 setup-selinux=yes
 setup-web-integration=yes
 setup-apparmor=yes
-{% if ansible_fqdn in groups['thinlinc-masters'] %}
+{% if ansible_fqdn in groups['thinlinc_masters'] %}
 server-type=master
 {% else %}
 server-type=agent
