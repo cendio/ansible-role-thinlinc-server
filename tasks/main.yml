@@ -45,25 +45,25 @@
     param: /vsmagent/agent_hostname
     value: "{{ thinlinc_agent_hostname or ansible_fqdn }}"
   notify: restart vsmagent
-  when: "'thinlinc-agents' in group_names"
+  when: "'thinlinc_agents' in group_names"
 
 - name: Configure /vsmagent/master_hostname
   tlconfig:
     param: /vsmagent/master_hostname
-    value: "{{ groups['thinlinc-masters'][0] or 'localhost' }}"
+    value: "{{ groups['thinlinc_masters'][0] or 'localhost' }}"
   notify: restart vsmagent
-  when: "'thinlinc-agents' in group_names"
+  when: "'thinlinc_agents' in group_names"
 
 - name: Configure /vsmagent/allowed_clients
   tlconfig:
     param: /vsmagent/allowed_clients
-    value: "{{ ' '.join(groups['thinlinc-masters']) or 'localhost' }}"
+    value: "{{ ' '.join(groups['thinlinc_masters']) or 'localhost' }}"
   notify: restart vsmagent
-  when: "'thinlinc-agents' in group_names"
+  when: "'thinlinc_agents' in group_names"
 
 - name: Configure list of agent servers
   tlconfig:
     param: /vsmserver/subclusters/Default/agents
-    value: "{{ ' '.join(groups['thinlinc-agents']) or 'localhost' }}"
+    value: "{{ ' '.join(groups['thinlinc_agents']) or 'localhost' }}"
   notify: restart vsmserver
-  when: "'thinlinc-masters' in group_names"
+  when: "'thinlinc_masters' in group_names"
