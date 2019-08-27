@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [1.3] - 2019-08-27
+
+### Changed
+
+- Updated to ThinLinc 4.10.1
+- Inventory names now use underscore (`_`) instead of dash (`-`),
+  e.g. `thinlinc-agents`.
+
+## [1.2] - 2019-04-05
+
+### Changed
+
+- Updated to ThinLinc 4.10.0
+
 ## [1.1] - 2018-12-13
 
 ### Added
@@ -22,6 +36,8 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.1...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.3...HEAD
+[1.3]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.2...v1.3
+[1.2]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.1...v1.2
 [1.1]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.0...v1.1
 [1.0]: https://github.com/cendio/ansible-role-thinlinc-server/compare/...v1.0
