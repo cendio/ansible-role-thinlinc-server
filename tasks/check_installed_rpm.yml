@@ -7,5 +7,5 @@
   register: thinlinc_packages_installed
   failed_when: ( thinlinc_packages_installed.rc not in [0, 1] )
   changed_when: False
-
+  check_mode: no
 
