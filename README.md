@@ -36,9 +36,9 @@ ThinLinc End User License Agreement. NOTE: Setting this to yes is a
 requirement for installing and using ThinLinc.
 
 ```yaml
-thinlinc_version: "4.10.1"
-thinlinc_build: "6197"
-thinlinc_server_bundle_file: "tl-4.10.1-server.zip"
+thinlinc_version: "4.11.0"
+thinlinc_build: "6323"
+thinlinc_server_bundle_file: "tl-4.11.0-server.zip"
 ```
 
 ThinLinc version, build number and server bundle names.
