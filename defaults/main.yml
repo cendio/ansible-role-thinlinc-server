@@ -30,3 +30,9 @@ thinlinc_tlsetup_migrate_conf: "old"
 #
 # The default value is null, which is equal to ansible_fqdn.
 thinlinc_agent_hostname: null
+
+# Define if this is a standalone thinlinc environment or a cluster
+thinlinc_use_cluster: false
+
+# Define the port on which the tlwebaccess service should listen
+thinlinc_webaccess_port: "300"

@@ -61,9 +61,24 @@
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
-- name: Configure list of agent servers
+- name: Configure list of agent servers when thinlinc_use_cluster is true
   tlconfig:
     param: /vsmserver/subclusters/Default/agents
     value: "{{ ' '.join(groups['thinlinc_agents']) or 'localhost' }}"
   notify: restart vsmserver
-  when: "'thinlinc_masters' in group_names"
+  when:
+    - "'thinlinc_masters' in group_names"
+    - thinlinc_use_cluster
+
+- name: Configure list of agent servers when thinlinc_use_cluster is false
+  tlconfig:
+    param: /vsmserver/subclusters/Default/agents
+    value: "{{ ansible_fqdn }}"
+  notify: restart vsmserver
+  when: not thinlinc_use_cluster
+
+- name: Set webaccess port to {{ thinlinc_webaccess_port }}
+  tlconfig:
+    param: /webaccess/listen_port
+    value: "{{ thinlinc_webaccess_port }}"
+  notify: restart tlwebaccess
