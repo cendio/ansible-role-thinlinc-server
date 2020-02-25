@@ -43,7 +43,7 @@
 - name: Configure /vsmagent/agent_hostname
   tlconfig:
     param: /vsmagent/agent_hostname
-    value: "{{ thinlinc_agent_hostname or ansible_fqdn }}"
+    value: "{{ thinlinc_agent_hostname or ansible_hostname }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
@@ -73,7 +73,7 @@
 - name: Configure list of agent servers when thinlinc_use_cluster is false
   tlconfig:
     param: /vsmserver/subclusters/Default/agents
-    value: "{{ ansible_fqdn }}"
+    value: "{{ ansible_hostname }}"
   notify: restart vsmserver
   when: not thinlinc_use_cluster
 
