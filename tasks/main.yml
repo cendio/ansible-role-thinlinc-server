@@ -67,3 +67,10 @@
     value: "{{ ' '.join(groups['thinlinc_agents']) or 'localhost' }}"
   notify: restart vsmserver
   when: "'thinlinc_masters' in group_names"
+
+- name: Set /vsmagent/xauthority_location
+  tlconfig:
+    param: /vsmagent/xauthority_location
+    value: "{{ thinlinc_xauthority_location }}"
+  notify: restart vsmagent
+  when: "'thinlinc_agents' in group_names"

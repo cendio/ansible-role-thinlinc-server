@@ -30,3 +30,8 @@ thinlinc_tlsetup_migrate_conf: "old"
 #
 # The default value is null, which is equal to ansible_fqdn.
 thinlinc_agent_hostname: null
+
+# The xauthority location for the user session.
+# Options: 'sessiondir' or 'homedir'
+# Default is sessiondir.
+thinlinc_xauthority_location: "sessiondir"
