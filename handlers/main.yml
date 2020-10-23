@@ -6,5 +6,11 @@
 - name: restart vsmserver
   service: name=vsmserver state=restarted
 
+- name: restart tlwebadm
+  service: name=tlwebadm state=restarted
+
+- name: restart tlwebaccess
+  service: name=tlwebaccess state=restarted
+
 - name: run tl-setup
   command: /opt/thinlinc/sbin/tl-setup -a "/root/thinlinc-setup.answers"
