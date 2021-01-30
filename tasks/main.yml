@@ -16,7 +16,7 @@
   block:
     - name: Unpacking ThinLinc server bundle
       unarchive:
-        src: "{{ thinlinc_server_bundle }}"
+        src: "{{ thinlinc_server_bundle_location }}"
         dest: /root
     - include_vars: "packages-rpm-{{ ansible_architecture }}.yml"
       when: ansible_os_family in ["RedHat", "Suse"]
