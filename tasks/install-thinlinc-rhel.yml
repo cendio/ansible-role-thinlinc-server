@@ -1,5 +1,5 @@
 ---
 - name: Install ThinLinc Software
-  yum: name="{{ item }}" state=present
+  yum: name="{{ item }}" state=present disable_gpg_check=true
   with_items: "{{ thinlinc_packages }}"
   notify: run tl-setup
