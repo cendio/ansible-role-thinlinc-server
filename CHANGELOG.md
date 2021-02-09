@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.6] - 2021-02-09
+
+### Changed
+
+- Updated to 4.12.1
+- Package signature check disabled as ThinLinc packages are not signed
+- Add handlers for the tlwebadm and tlwebaccess services
+
 ## [1.5] - 2020-06-29
 
 ### Changed
