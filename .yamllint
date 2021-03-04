@@ -1,0 +1,8 @@
+---
+extends: default
+
+rules:
+  line-length: disable
+
+  truthy:
+    allowed-values: ['true', 'True', 'yes', 'false', 'False', 'no']
