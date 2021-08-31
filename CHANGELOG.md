@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.7] - 2021-08-31
+
+### Changed
+
+- Updated to 4.13.0
+- Updated tlsetup answers to match new Python 3 requirements
+- Added .yamllint to catch syntax errors and style issues
+
 ## [1.6] - 2021-02-09
 
 ### Changed
@@ -58,7 +66,8 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.6...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.7...HEAD
+[1.7]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.6...v1.7
 [1.6]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.5...v1.6
 [1.5]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.4...v1.5
 [1.4]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.3...v1.4
