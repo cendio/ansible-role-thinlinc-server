@@ -7,5 +7,5 @@
 #  with_items: "{{ thinlinc_packages }}"
 
 - name: Install ThinLinc Software
-  command: "/usr/bin/dpkg --install --no-debsig {{ ' '.join(thinlinc_packages) }}"
+  command: "/usr/bin/dpkg --install --no-debsig --force-confold {{ ' '.join(thinlinc_packages) }}"
   notify: run tl-setup
