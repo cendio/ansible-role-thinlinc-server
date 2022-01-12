@@ -38,7 +38,7 @@ requirement for installing and using ThinLinc.
 ```yaml
 thinlinc_version: "4.13.0"
 thinlinc_build: "2253"
-thinlinc_server_bundle_file: "tl-4.13.0-server.zip"
+thinlinc_server_bundle: "tl-4.13.0-server.zip"
 ```
 
 ThinLinc version, build number and server bundle names.
