@@ -30,6 +30,8 @@
       when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
   when: thinlinc_packages_installed.rc == 1
 
+- name: Copy /usr/etc/pam.d/sshd
+  include_tasks: "copy_usr_etc_pam_sshd.yml"
 
 - name: Copy in tlsetup.answers
   template:
