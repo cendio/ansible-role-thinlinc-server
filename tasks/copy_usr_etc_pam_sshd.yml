@@ -1,0 +1,22 @@
+---
+
+- name: Check /etc/pam.d/sshd
+  stat:
+    path: /etc/pam.d/sshd
+  register: etc_pam_sshd
+
+- block:
+
+    - name: Check /usr/etc/pam.d/sshd
+      stat:
+        path: /usr/etc/pam.d/sshd
+      register: usr_etc_pam_sshd
+
+    - name: Copy /usr/etc/pam.d/sshd to  /etc/pam.d/sshd
+      copy:
+        src: /usr/etc/pam.d/sshd
+        dest: /etc/pam.d/sshd
+        remote_src: true
+      when: usr_etc_pam_sshd.stat.exists == true
+
+  when: etc_pam_sshd.stat.exists == false
