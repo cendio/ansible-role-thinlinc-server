@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.8] - 2022-02-07
+
+### Changed
+
+- Updated to 4.14.0
+- Added workaround for OpenSUSE Tumbleweed usr merge
+- In case of package upgrade, force the use of old config files
+- Use correct parameter name for thinlinc_server_bundle_file
+
 ## [1.7] - 2021-08-31
 
 ### Changed
@@ -66,7 +75,8 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.7...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.8...HEAD
+[1.8]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.7...v1.8
 [1.7]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.6...v1.7
 [1.6]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.5...v1.6
 [1.5]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.4...v1.5
