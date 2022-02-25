@@ -5,12 +5,14 @@
     name: unzip
     state: present
 
+- name: Checking which packages are installed
+  package_facts:
+
 - name: Checking for installed ThinLinc packages
-  block:
-    - include_tasks: "check_installed_rpm.yml"
-      when: ansible_os_family in ["RedHat", "Suse"]
-    - include_tasks: "check_installed_deb.yml"
-      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+  set_fact:
+    thinlinc_packages_installed: true
+  when: "('thinlinc-vsm' in ansible_facts.packages) and
+         (ansible_facts.packages['thinlinc-vsm'][0]['version'] == (thinlinc_version  + '-' + thinlinc_build))"
 
 - name: Installing ThinLinc packages
   block:
@@ -35,7 +37,7 @@
       when: ansible_os_family == "Suse"
     - include_tasks: "install-thinlinc-debian.yml"
       when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
-  when: thinlinc_packages_installed.rc == 1
+  when: thinlinc_packages_installed is undefined
 
 # Workaround for OpenSUSE Tumbleweed usr merge
 # See https://www.cendio.com/bugzilla/show_bug.cgi?id=7829
