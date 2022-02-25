@@ -18,10 +18,17 @@
       unarchive:
         src: "{{ thinlinc_server_bundle }}"
         dest: /root
-    - include_vars: "packages-rpm-{{ ansible_architecture }}.yml"
+    - name: Checking if rpm platform
+      set_fact:
+        _tl_pkg_fmt: rpm
       when: ansible_os_family in ["RedHat", "Suse"]
-    - include_vars: "packages-deb-{{ ansible_architecture }}.yml"
+    - name: Checking if deb platform
+      set_fact:
+        _tl_pkg_fmt: deb
       when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+    - name: Checking which packages to install
+      set_fact:
+        thinlinc_packages: "{{ _thinlinc_packages[ansible_architecture][_tl_pkg_fmt] }}"
     - include_tasks: "install-thinlinc-rhel.yml"
       when: ansible_os_family == "RedHat"
     - include_tasks: "install-thinlinc-suse.yml"
