@@ -11,8 +11,13 @@
 - name: Checking for installed ThinLinc packages
   set_fact:
     thinlinc_packages_installed: true
-  when: "('thinlinc-vsm' in ansible_facts.packages) and
-         (ansible_facts.packages['thinlinc-vsm'][0]['version'] == (thinlinc_version  + '-' + thinlinc_build))"
+  when:
+    (('thinlinc-server' in ansible_facts.packages) and
+     (ansible_facts.packages['thinlinc-server'][0]['version'] ==
+      (thinlinc_version  + '-' + thinlinc_build))) or
+    (('thinlinc-vsm' in ansible_facts.packages) and
+     (ansible_facts.packages['thinlinc-vsm'][0]['version'] ==
+      (thinlinc_version  + '-' + thinlinc_build)))
 
 - name: Installing ThinLinc packages
   block:
@@ -30,7 +35,10 @@
       when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
     - name: Checking which packages to install
       set_fact:
-        thinlinc_packages: "{{ _thinlinc_packages[ansible_architecture][_tl_pkg_fmt] }}"
+        thinlinc_packages:
+          "{{ _thinlinc_packages[ansible_architecture][_tl_pkg_fmt] if
+          ( thinlinc_version is version('4.14.0', '>') ) else
+          _old_thinlinc_packages[ansible_architecture][_tl_pkg_fmt] }}"
     - include_tasks: "install-thinlinc-rhel.yml"
       when: ansible_os_family == "RedHat"
     - include_tasks: "install-thinlinc-suse.yml"

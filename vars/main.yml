@@ -2,6 +2,13 @@
 pkgdir: "/root/tl-{{thinlinc_version}}-server/packages"
 
 _thinlinc_packages:
+  x86_64:
+    rpm:
+      - "{{ pkgdir }}/thinlinc-server-{{ thinlinc_version }}-{{ thinlinc_build }}.x86_64.rpm"
+    deb:
+      - "{{ pkgdir }}/thinlinc-server_{{ thinlinc_version }}-{{ thinlinc_build }}_amd64.deb"
+
+_old_thinlinc_packages:
   i386:
     rpm:
       - "{{ pkgdir }}/thinlinc-tladm-{{ thinlinc_version }}-{{ thinlinc_build }}.i686.rpm"
