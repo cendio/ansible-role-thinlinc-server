@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+- Rewrite to fix style issues, fix some tasks to be a bit more 'ansible-y'
+- Fixed file permissions warning
+- Made role compatible with 'new' ansible_facts[...] notation of facts
+- Made template correctly translate true/false to yes/no
+
 ### Changed
 
 ## [1.8] - 2022-02-07
