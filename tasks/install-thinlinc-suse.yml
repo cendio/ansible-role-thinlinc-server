@@ -1,4 +1,7 @@
 ---
 - name: Install ThinLinc Software
-  zypper: name="{{ thinlinc_packages }}" state=present disable_gpg_check=True
+  zypper:
+    name: "{{ thinlinc_packages }}"
+    state: present
+    disable_gpg_check: true
   notify: run tl-setup
