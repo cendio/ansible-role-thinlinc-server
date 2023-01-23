@@ -1,16 +1,12 @@
 ---
-
 - name: Installing pre-requisites
   package:
     name: unzip
     state: present
+    update_cache: true
 
-- name: Checking for installed ThinLinc packages
-  block:
-    - include_tasks: "check_installed_rpm.yml"
-      when: ansible_os_family in ["RedHat", "Suse"]
-    - include_tasks: "check_installed_deb.yml"
-      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
+- name: Collect installed packages
+  package_facts:
 
 - name: Installing ThinLinc packages
   block:
@@ -18,56 +14,68 @@
       unarchive:
         src: "{{ thinlinc_server_bundle }}"
         dest: /root
-    - include_vars: "packages-rpm-{{ ansible_architecture }}.yml"
-      when: ansible_os_family in ["RedHat", "Suse"]
-    - include_vars: "packages-deb-{{ ansible_architecture }}.yml"
-      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
-    - include_tasks: "install-thinlinc-rhel.yml"
-      when: ansible_os_family == "RedHat"
-    - include_tasks: "install-thinlinc-suse.yml"
-      when: ansible_os_family == "Suse"
-    - include_tasks: "install-thinlinc-debian.yml"
-      when: ansible_os_family in ["Debian", "Ubuntu", "Linuxmint"]
-  when: thinlinc_packages_installed.rc == 1
+        creates: "{{ pkgdir }}"
+    - name: Load vars for {{ ansible_facts['architecture'] }} RPMs
+      include_vars: "packages-rpm-{{ ansible_facts['architecture'] }}.yml"
+      when: ansible_facts['os_family'] in ["RedHat", "Suse"]
+    - name: Load vars for {{ ansible_facts['architecture'] }} DEBs
+      include_vars: "packages-deb-{{ ansible_facts['architecture'] }}.yml"
+      when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
+    - name: Run tasks for RHEL-like
+      include_tasks: "install-thinlinc-rhel.yml"
+      when: ansible_facts['os_family'] == "RedHat"
+    - name: Run tasks for SUSE-like
+      include_tasks: "install-thinlinc-suse.yml"
+      when: ansible_facts['os_family'] == "Suse"
+    - name: Run tasks for Debian-like
+      include_tasks: "install-thinlinc-debian.yml"
+      when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
+  when: >
+    ansible_facts['packages']['thinlinc-vsm'][0]['version'] is not defined or
+    ansible_facts['packages']['thinlinc-vsm'][0]['version'] != thinlinc_version
 
 # Workaround for OpenSUSE Tumbleweed usr merge
 # See https://www.cendio.com/bugzilla/show_bug.cgi?id=7829
 - name: Copy /usr/etc/pam.d/sshd
   include_tasks: "copy_usr_etc_pam_sshd.yml"
+  when: ansible_facts['os_family'] == "Suse"
 
 - name: Copy in tlsetup.answers
   template:
     src: thinlinc-setup.answers.j2
     dest: /root/thinlinc-setup.answers
+    owner: root
+    group: root
+    mode: '0644'
   notify: run tl-setup
 
-# Force tl-setup to run here, if required
-- meta: flush_handlers
+- name: Force tl-setup to run if required
+  meta: flush_handlers
 
 - name: Configure /vsmagent/agent_hostname
   tlconfig:
     param: /vsmagent/agent_hostname
-    value: "{{ thinlinc_agent_hostname or ansible_fqdn }}"
+    value: "{{ thinlinc_agent_hostname | default(ansible_facts['fqdn']) }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
 - name: Configure /vsmagent/master_hostname
   tlconfig:
     param: /vsmagent/master_hostname
-    value: "{{ groups['thinlinc_masters'][0] or 'localhost' }}"
+    value: "{{ groups['thinlinc_masters'][0] | default('localhost') }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
 - name: Configure /vsmagent/allowed_clients
   tlconfig:
     param: /vsmagent/allowed_clients
-    value: "{{ ' '.join(groups['thinlinc_masters']) or 'localhost' }}"
+    value: "{{ groups['thinlinc_masters'] | default(['localhost']) | join(' ') }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
 - name: Configure list of agent servers
   tlconfig:
     param: /vsmserver/subclusters/Default/agents
-    value: "{{ ' '.join(groups['thinlinc_agents']) or 'localhost' }}"
+    value: "{{ groups['thinlinc_agents'] | default(['localhost']) | join(' ') }}"
   notify: restart vsmserver
   when: "'thinlinc_masters' in group_names"

@@ -6,7 +6,6 @@
   register: etc_pam_sshd
 
 - block:
-
     - name: Check /usr/etc/pam.d/sshd
       stat:
         path: /usr/etc/pam.d/sshd
@@ -16,6 +15,9 @@
       copy:
         src: /usr/etc/pam.d/sshd
         dest: /etc/pam.d/sshd
+        owner: root
+        group: root
+        mode: '0644'
         remote_src: true
       when: usr_etc_pam_sshd.stat.exists == true
 
