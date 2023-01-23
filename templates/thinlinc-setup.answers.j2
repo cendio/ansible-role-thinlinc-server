@@ -1,22 +1,22 @@
 # {{ ansible_managed }}
-install-gtk={{ thinlinc_autoinstall_dependencies }}
+install-gtk={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
 email-address={{ thinlinc_email }}
-install-python-ldap={{ thinlinc_autoinstall_dependencies }}
+install-python-ldap={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
 setup-firewall=yes
 setup-selinux=yes
 setup-web-integration=yes
 setup-apparmor=yes
-{% if ansible_fqdn in groups['thinlinc_masters'] %}
+{% if ansible_facts['fqdn'] in groups['thinlinc_masters'] %}
 server-type=master
 {% else %}
 server-type=agent
 {% endif %}
 missing-answer=abort
-install-nfs={{ thinlinc_autoinstall_dependencies }}
-install-sshd={{ thinlinc_autoinstall_dependencies }}
-accept-eula={{ thinlinc_accept_eula }}
+install-nfs={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
+install-sshd={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
+accept-eula={{ thinlinc_accept_eula | ternary('yes', 'no', 'no') }}
 migrate-conf={{ thinlinc_tlsetup_migrate_conf }}
-install-required-libs={{ thinlinc_autoinstall_dependencies }}
-setup-nearest={{ thinlinc_printers }}
-setup-thinlocal={{ thinlinc_printers }}
+install-required-libs={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
+setup-nearest={{ thinlinc_printers | ternary('yes', 'no', 'no') }}
+setup-thinlocal={{ thinlinc_printers | ternary('yes', 'no', 'no') }}
 tlwebadm-password={{ thinlinc_webadm_password }}
