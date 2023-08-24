@@ -1,11 +1,8 @@
 ---
-# Because of circular dependencies, we need to install all packages at
-# once. I can't get the apt provider to install multiple local
-# packages all at once though. :/
-#
-#  apt: deb="{{ item }}" state=present
-#  with_items: "{{ thinlinc_packages }}"
+# The apt provider actually calls dpkg for local packages, which isn't
+# clever enough to handle our upgrades:
+# https://github.com/ansible/ansible/issues/77150
 
 - name: Install ThinLinc Software
-  command: "/usr/bin/dpkg --install --no-debsig --force-confold {{ ' '.join(thinlinc_packages) }}"
+  command: "/usr/bin/apt install -y -o \"Dpkg::Options::=--no-debsig\" -o \"Dpkg::Options::=--force-confold\" {{ ' '.join(thinlinc_packages) }}"
   notify: run tl-setup

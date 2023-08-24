@@ -15,12 +15,20 @@
         src: "{{ thinlinc_server_bundle }}"
         dest: /root
         creates: "{{ pkgdir }}"
-    - name: Load vars for {{ ansible_facts['architecture'] }} RPMs
-      include_vars: "packages-rpm-{{ ansible_facts['architecture'] }}.yml"
+    - name: Checking if rpm platform
+      set_fact:
+        _tl_pkg_fmt: rpm
       when: ansible_facts['os_family'] in ["RedHat", "Suse"]
-    - name: Load vars for {{ ansible_facts['architecture'] }} DEBs
-      include_vars: "packages-deb-{{ ansible_facts['architecture'] }}.yml"
+    - name: Checking if deb platform
+      set_fact:
+        _tl_pkg_fmt: deb
       when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
+    - name: Checking which packages to install
+      set_fact:
+        thinlinc_packages:
+          "{{ _thinlinc_packages[ansible_architecture][_tl_pkg_fmt] if
+          ( thinlinc_version is version('4.14.0', '>') ) else
+          _old_thinlinc_packages[ansible_architecture][_tl_pkg_fmt] }}"
     - name: Run tasks for RHEL-like
       include_tasks: "install-thinlinc-rhel.yml"
       when: ansible_facts['os_family'] == "RedHat"
@@ -31,8 +39,11 @@
       include_tasks: "install-thinlinc-debian.yml"
       when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
   when: >
-    ansible_facts['packages']['thinlinc-vsm'][0]['version'] is not defined or
-    ansible_facts['packages']['thinlinc-vsm'][0]['version'] != thinlinc_version
+    (('thinlinc-server' not in ansible_facts['packages']) or
+     (ansible_facts['packages']['thinlinc-server'][0]['version'] != thinlinc_version))
+    and
+    (('thinlinc-vsm' not in ansible_facts['packages']) or
+     (ansible_facts['packages']['thinlinc-vsm'][0]['version'] != thinlinc_version))
 
 # Workaround for OpenSUSE Tumbleweed usr merge
 # See https://www.cendio.com/bugzilla/show_bug.cgi?id=7829
