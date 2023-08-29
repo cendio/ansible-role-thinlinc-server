@@ -66,7 +66,7 @@
 - name: Configure /vsmagent/agent_hostname
   tlconfig:
     param: /vsmagent/agent_hostname
-    value: "{{ thinlinc_agent_hostname | default(ansible_facts['fqdn']) }}"
+    value: "{{ thinlinc_agent_hostname | default(ansible_facts['fqdn'], true) }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
