@@ -28,5 +28,5 @@ thinlinc_tlsetup_migrate_conf: "old"
 # your server. See
 # https://www.cendio.com/resources/docs/tag/network.html#network_nat
 #
-# The default value is null, which is equal to ansible_fqdn.
-thinlinc_agent_hostname: null
+# If unset, then ansible_fqdn will be used.
+#thinlinc_agent_hostname: null
