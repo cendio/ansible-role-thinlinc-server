@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.10] - 2024-02-01
+
+### Changed
+
  - Updated to 4.16.0
  - Fixed default value of thinlinc_agent_hostname
 
@@ -89,7 +93,8 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.9...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.10...HEAD
+[1.9]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.9...v1.10
 [1.9]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.8...v1.9
 [1.8]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.7...v1.8
 [1.7]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.6...v1.7
