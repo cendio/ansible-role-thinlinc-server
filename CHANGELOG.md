@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+ - Updated to 4.16.0
  - Fixed default value of thinlinc_agent_hostname
 
 ## [1.9] - 2023-08-25

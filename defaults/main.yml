@@ -3,9 +3,9 @@
 
 thinlinc_accept_eula: "no"
 
-thinlinc_version: "4.15.0"
-thinlinc_build: "3358"
-thinlinc_server_bundle: "tl-4.15.0-server.zip"
+thinlinc_version: "4.16.0"
+thinlinc_build: "3491"
+thinlinc_server_bundle: "tl-4.16.0-server.zip"
 
 thinlinc_autoinstall_dependencies: "yes"
 
