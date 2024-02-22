@@ -40,10 +40,10 @@
       when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
   when: >
     (('thinlinc-server' not in ansible_facts['packages']) or
-     (ansible_facts['packages']['thinlinc-server'][0]['version'] != thinlinc_version))
+     (ansible_facts['packages']['thinlinc-server'][0]['version'].split('-') | first != thinlinc_version))
     and
     (('thinlinc-vsm' not in ansible_facts['packages']) or
-     (ansible_facts['packages']['thinlinc-vsm'][0]['version'] != thinlinc_version))
+     (ansible_facts['packages']['thinlinc-vsm'][0]['version'].split('-') | first != thinlinc_version))
 
 # Workaround for OpenSUSE Tumbleweed usr merge
 # See https://www.cendio.com/bugzilla/show_bug.cgi?id=7829
