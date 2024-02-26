@@ -31,7 +31,7 @@ param:
 TLCONFIG = "/opt/thinlinc/bin/tl-config"
 
 def getvalue(param):
-    tlproc = subprocess.Popen([TLCONFIG, "%s" % param], stdout=subprocess.PIPE)
+    tlproc = subprocess.Popen([TLCONFIG, "%s" % param], stdout=subprocess.PIPE,universal_newlines=True)
     stdout, _ = tlproc.communicate()
     return stdout.rstrip()
 
