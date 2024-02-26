@@ -29,4 +29,4 @@ thinlinc_tlsetup_migrate_conf: "old"
 # https://www.cendio.com/resources/docs/tag/network.html#network_nat
 #
 # If unset, then ansible_fqdn will be used.
-#thinlinc_agent_hostname: null
+# thinlinc_agent_hostname: null
