@@ -80,13 +80,13 @@
 - name: Configure /vsmagent/allowed_clients
   tlconfig:
     param: /vsmagent/allowed_clients
-    value: "{{ groups['thinlinc_masters'] | default(['localhost']) | join(' ') }}"
+    value: "{{ groups['thinlinc_masters'] | default(['localhost'], true) | join(' ') }}"
   notify: restart vsmagent
   when: "'thinlinc_agents' in group_names"
 
 - name: Configure list of agent servers
   tlconfig:
     param: /vsmserver/subclusters/Default/agents
-    value: "{{ groups['thinlinc_agents'] | default(['localhost']) | join(' ') }}"
+    value: "{{ groups['thinlinc_agents'] | default(['localhost'], true) | join(' ') }}"
   notify: restart vsmserver
   when: "'thinlinc_masters' in group_names"
