@@ -94,11 +94,11 @@ requirements.yml` to install the role:
 - src: https:///github.com/cendio/ansible-role-thinlinc-server.git
   scm: git
   name: thinlinc-server
-  version: v1.1
+  version: v1.10
 ```
 
 The role uses three groups - thinlinc_masters, thinlinc_agents and
-thinlinc-servers. Here's an example inventory file with one master
+thinlinc_servers. Here's an example inventory file with one master
 server and three agent servers:
 
 ```yaml
