@@ -12,7 +12,7 @@
   block:
     - name: Unpacking ThinLinc server bundle
       unarchive:
-        src: "{{ thinlinc_server_bundle }}"
+        src: "tl-{{ thinlinc_version }}-server.zip"
         dest: /root
         creates: "{{ pkgdir }}"
     - name: Checking if rpm platform
