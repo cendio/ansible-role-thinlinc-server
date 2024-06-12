@@ -1,4 +1,10 @@
 ---
+- name: Ensure architecture is supported by current version
+  assert:
+    that: thinlinc_version is version('4.14.0', '<=')
+    msg: "32-bit architecture not supported by this version"
+  when: ansible_architecture == 'i386'
+
 - name: Installing pre-requisites
   package:
     name: unzip
@@ -14,21 +20,7 @@
       unarchive:
         src: "tl-{{ thinlinc_version }}-server.zip"
         dest: /root
-        creates: "{{ pkgdir }}"
-    - name: Checking if rpm platform
-      set_fact:
-        _tl_pkg_fmt: rpm
-      when: ansible_facts['os_family'] in ["RedHat", "Suse"]
-    - name: Checking if deb platform
-      set_fact:
-        _tl_pkg_fmt: deb
-      when: ansible_facts['os_family'] in ["Debian", "Ubuntu", "Linuxmint"]
-    - name: Checking which packages to install
-      set_fact:
-        thinlinc_packages:
-          "{{ _thinlinc_packages[ansible_architecture][_tl_pkg_fmt] if
-          ( thinlinc_version is version('4.14.0', '>') ) else
-          _old_thinlinc_packages[ansible_architecture][_tl_pkg_fmt] }}"
+        creates: "/root/tl-{{ thinlinc_version }}-server"
     - name: Run tasks for RHEL-like
       include_tasks: "install-thinlinc-rhel.yml"
       when: ansible_facts['os_family'] == "RedHat"

@@ -37,10 +37,9 @@ requirement for installing and using ThinLinc.
 
 ```yaml
 thinlinc_version: "4.14.0"
-thinlinc_build: "2408"
 ```
 
-ThinLinc version and build number.
+ThinLinc version number.
 
 ```yaml
 thinlinc_autoinstall_dependencies: "yes"
