@@ -4,7 +4,6 @@
 thinlinc_accept_eula: "no"
 
 thinlinc_version: "4.17.0"
-thinlinc_build: "3647"
 
 thinlinc_autoinstall_dependencies: "yes"
 
