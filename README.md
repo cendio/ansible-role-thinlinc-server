@@ -69,6 +69,8 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 
 ThinLinc Web Administration password. This default password is
 "thinlinc". Generate new hashes with `/opt/thinlinc/sbin/tl-gen-auth`.
+See [the documentation for this
+parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_tlwebadm.html#server-config-tlwebadm-password).
 
 ```yaml
 thinlinc_agent_hostname: null
