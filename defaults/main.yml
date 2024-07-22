@@ -15,6 +15,9 @@ thinlinc_printers: "yes"
 # The port on which the tlwebaccess service should listen
 thinlinc_webaccess_port: 300
 
+# The URL to the login page of Web Access on the master server
+thinlinc_webaccess_login_page: "/"
+
 # The port on which the tlwebadm service should listen
 thinlinc_webadm_port: 1010
 

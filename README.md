@@ -72,6 +72,14 @@ The port on which the ThinLinc Web Access service listens on. See
 parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_webaccess.html#server-config-webaccess-listen_port).
 
 ```yaml
+thinlinc_webaccess_login_page: "tl-master-01.example.com"
+```
+
+The URL to the login page of ThinLinc Web Access on the master server.
+See [the documentation for this
+parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_webaccess.html#server-config-webaccess-login_page).
+
+```yaml
 thinlinc_webadm_port: 1010
 ```
 

@@ -97,6 +97,12 @@
     value: "{{ thinlinc_webaccess_port }}"
   notify: restart tlwebaccess
 
+- name: Configure /webaccess/login_page
+  tlconfig:
+    param: /webaccess/login_page
+    value: "{{ thinlinc_webaccess_login_page }}"
+  notify: restart tlwebaccess
+
 - name: Configure /tlwebadm/listen_port
   tlconfig:
     param: /tlwebadm/listen_port
