@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
  - Updated to 4.17.0
+ - Added configuration for Web Access & Web Administration ports
 
 ## [1.10] - 2024-02-01
 

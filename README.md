@@ -64,6 +64,22 @@ thinlinc_printers: "yes"
 Whether to install the optional CUPS printer queues for ThinLinc.
 
 ```yaml
+thinlinc_webaccess_port: 443
+```
+
+The port on which the ThinLinc Web Access service listens on. See
+[the documentation for this
+parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_webaccess.html#server-config-webaccess-listen_port).
+
+```yaml
+thinlinc_webadm_port: 1010
+```
+
+The port on which the ThinLinc Web Administration service listens on. See
+[the documentation for this
+parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_tlwebadm.html#server-config-tlwebadm-listen_port).
+
+```yaml
 thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5ZlabkZGj0nYXh0IaxaiYucsDD.fGJ5sNPthWf63pXkCn9Nu0ua2Ye1"
 ```
 
