@@ -94,7 +94,7 @@ First release.
 - An Ansible role to install the ThinLinc server software.
 
 [unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.10...HEAD
-[1.9]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.9...v1.10
+[1.10]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.9...v1.10
 [1.9]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.8...v1.9
 [1.8]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.7...v1.8
 [1.7]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.6...v1.7
