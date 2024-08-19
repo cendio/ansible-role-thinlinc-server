@@ -90,3 +90,21 @@
     value: "{{ groups['thinlinc_agents'] | default(['localhost'], true) | join(' ') }}"
   notify: restart vsmserver
   when: "'thinlinc_masters' in group_names"
+
+- name: Configure /webaccess/listen_port
+  tlconfig:
+    param: /webaccess/listen_port
+    value: "{{ thinlinc_webaccess_port }}"
+  notify: restart tlwebaccess
+
+- name: Configure /webaccess/login_page
+  tlconfig:
+    param: /webaccess/login_page
+    value: "{{ thinlinc_webaccess_login_page }}"
+  notify: restart tlwebaccess
+
+- name: Configure /tlwebadm/listen_port
+  tlconfig:
+    param: /tlwebadm/listen_port
+    value: "{{ thinlinc_webadm_port }}"
+  notify: restart tlwebadm

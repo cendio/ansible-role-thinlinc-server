@@ -12,6 +12,15 @@ thinlinc_autoinstall_dependencies: "yes"
 thinlinc_email: "root@localhost"
 thinlinc_printers: "yes"
 
+# The port on which the tlwebaccess service should listen
+thinlinc_webaccess_port: 300
+
+# The URL to the login page of Web Access on the master server
+thinlinc_webaccess_login_page: "/"
+
+# The port on which the tlwebadm service should listen
+thinlinc_webadm_port: 1010
+
 # ThinLinc Web Administration password. This default password is
 # "thinlinc". Generate new hashes with /opt/thinlinc/sbin/tl-gen-auth.
 thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5ZlabkZGj0nYXh0IaxaiYucsDD.fGJ5sNPthWf63pXkCn9Nu0ua2Ye1"
