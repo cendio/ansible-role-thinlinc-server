@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
  - Updated to 4.17.0
+ - Simplified/refactored package installation tasks
+
+### Added
+
  - Added configuration for Web Access & Web Administration ports
  - Added configuration for Web Access login page
- - Simplified/refactored package installation tasks
 
 ### Removed
 
