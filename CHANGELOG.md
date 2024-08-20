@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - Updated to 4.17.0
  - Added configuration for Web Access & Web Administration ports
  - Added configuration for Web Access login page
+ - Simplified/refactored package installation tasks
+
+### Removed
+
+ - thinlinc_server_bundle and thinlinc_build parameters
+ - vars/main.yaml configuration file (redundant)
 
 ## [1.10] - 2024-02-01
 
