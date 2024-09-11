@@ -42,6 +42,13 @@ thinlinc_version: "4.14.0"
 ThinLinc version number.
 
 ```yaml
+thinlinc_bundle_path: "tl-{{ thinlinc_version }}-server.zip"
+```
+
+The location of the ThinLinc Server Bundle to install. If not set, the
+default Ansible search paths and bundle filename will be used.
+
+```yaml
 thinlinc_autoinstall_dependencies: "yes"
 ```
 
