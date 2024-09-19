@@ -31,23 +31,27 @@ param:
 TLCONFIG = "/opt/thinlinc/bin/tl-config"
 
 def getvalue(param):
-    tlproc = subprocess.Popen([TLCONFIG, "%s" % param], stdout=subprocess.PIPE,universal_newlines=True)
-    stdout, _ = tlproc.communicate()
-    return stdout.rstrip()
+    tlproc = subprocess.run([TLCONFIG, "%s" % param], stdout=subprocess.PIPE, universal_newlines=True)
+    return tlproc.stdout.strip("\n")
 
-def setvalue(param, value):
-    tlproc = subprocess.Popen([TLCONFIG, "%s=%s" % (param, value)])
-    return tlproc.wait()
+
+def setvalue(param, value, check_mode):
+    if not check_mode:
+        tlproc = subprocess.run([TLCONFIG, "%s=%s" % (param, value)])
+        return tlproc.returncode
+    else:
+        return 0
 
 def main():
-    changed = False
-
     module = AnsibleModule(argument_spec=dict(param=dict(required=True, type='str'),
                                               value=dict(required=True)),
                            supports_check_mode=True)
 
-    if module.check_mode:
-        module.exit_json(changed=module.params['value'] != getvalue(module.params['param']))
+    result = {
+        "changed": False,
+        "param": module.params['param'],
+        "value": module.params['value']
+    }
 
     if len(module.params['param']) == 0:
         module.fail_json(msg="Param can't be empty")
@@ -55,17 +59,24 @@ def main():
     if len(module.params['value']) == 0:
         module.fail_json(msg="Value can't be empty")
 
-    if getvalue(module.params['param']) != module.params['value']:
-        ret = setvalue(module.params['param'], module.params['value'])
+    current = getvalue(module.params['param'])
+    new = module.params['value']
 
-        if ret is not 0:
+    if current != new:
+        ret = setvalue(module.params['param'], module.params['value'], module.check_mode)
+
+        if ret != 0:
             msg = "Failed setting %s: tl-config returned %d" % (module.params['param'], ret)
             module.fail_json(msg=msg)
-        changed = True
+        result['changed'] = True
 
-    module.exit_json(changed=changed,
-                     param=module.params['param'],
-                     value=module.params['value'])
+        if module._diff:
+            result['diff'] = {
+                "before": current,
+                "after": new
+            }
+
+    module.exit_json(**result)
 
 if __name__ == '__main__':
     main()
