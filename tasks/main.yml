@@ -18,7 +18,7 @@
   block:
     - name: Unpacking ThinLinc server bundle
       unarchive:
-        src: "tl-{{ thinlinc_version }}-server.zip"
+        src: "{{ thinlinc_bundle_path }}"
         dest: /root
         creates: "/root/tl-{{ thinlinc_version }}-server"
     - name: Run tasks for RHEL-like
