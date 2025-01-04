@@ -3,7 +3,7 @@
 
 thinlinc_accept_eula: "no"
 
-thinlinc_version: "4.17.0"
+thinlinc_version: "4.18.0"
 thinlinc_bundle_path: "tl-{{ thinlinc_version }}-server.zip"
 
 thinlinc_autoinstall_dependencies: "yes"
