@@ -1,5 +1,4 @@
 ---
----
 - name: Locate 32-bit packages
   find:
     paths: "/root/tl-{{ thinlinc_version }}-server/packages"
