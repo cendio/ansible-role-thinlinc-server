@@ -9,16 +9,24 @@
     - name: Check /usr/etc/pam.d/sshd
       stat:
         path: /usr/etc/pam.d/sshd
-      register: usr_etc_pam_sshd
+      register: locate_pam_sshd
 
-    - name: Copy /usr/etc/pam.d/sshd to  /etc/pam.d/sshd
+    - name: Check /usr/lib/pam.d/sshd
+      stat:
+        path: /usr/lib/pam.d/sshd
+      register: locate_pam_sshd
+      when: locate_pam_sshd.stat.exists is defined
+            and not locate_pam_sshd.stat.exists
+
+    - name: Copy located pam.d/sshd to /etc/pam.d/sshd
       copy:
-        src: /usr/etc/pam.d/sshd
+        src: "{{ locate_pam_sshd.stat.path }}"
         dest: /etc/pam.d/sshd
         owner: root
         group: root
         mode: '0644'
         remote_src: true
-      when: usr_etc_pam_sshd.stat.exists == true
+      when: locate_pam_sshd.stat.exists is defined
+            and locate_pam_sshd.stat.exists == true
 
   when: etc_pam_sshd.stat.exists == false
