@@ -36,7 +36,7 @@ ThinLinc End User License Agreement. NOTE: Setting this to yes is a
 requirement for installing and using ThinLinc.
 
 ```yaml
-thinlinc_version: "4.14.0"
+thinlinc_version: "4.18.0"
 ```
 
 ThinLinc version number.

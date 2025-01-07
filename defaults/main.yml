@@ -3,7 +3,7 @@
 
 thinlinc_accept_eula: "no"
 
-thinlinc_version: "4.17.0"
+thinlinc_version: "4.18.0"
 thinlinc_bundle_path: "tl-{{ thinlinc_version }}-server.zip"
 
 thinlinc_autoinstall_dependencies: "yes"
@@ -29,6 +29,9 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 #  - new: overwrite all local changes with new defaults
 #  - parameters: auto-migrate old to new configuration
 thinlinc_tlsetup_migrate_conf: "old"
+
+thinlinc_hostname_choice: "ip"
+thinlinc_manual_agent_hostname: ""
 
 
 # The agent hostname to report to clients. If your server is behind a
