@@ -2,6 +2,8 @@
 install-gtk={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
 email-address={{ thinlinc_email }}
 install-python-ldap={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
+agent-hostname-choice={{ thinlinc_hostname_choice }}
+manual-agent-hostname={{ thinlinc_manual_agent_hostname }}
 setup-firewall=yes
 setup-selinux=yes
 setup-web-integration=yes
