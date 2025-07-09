@@ -78,7 +78,7 @@
 
 - name: Configure list of agent servers
   tlconfig:
-    param: /vsmserver/subclusters/Default/agents
+    param: /subclusters/Default/agents
     value: "{{ groups['thinlinc_agents'] | default(['localhost'], true) | join(' ') }}"
   notify: restart vsmserver
   when: "'thinlinc_masters' in group_names"
