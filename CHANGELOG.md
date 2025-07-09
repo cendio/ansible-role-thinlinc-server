@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated to 4.19.0
+- Updated paths for HA and subclusters
 
 ## [1.12] - 2025-01-07
 

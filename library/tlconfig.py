@@ -18,7 +18,7 @@ requirements:
 '''
 
 EXAMPLES = '''
-- tlconfig: param=/vsmserver/HA/enabled value=1
+- tlconfig: param=/HA/enabled value=1
 '''
 
 RETURN = '''
