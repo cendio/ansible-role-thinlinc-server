@@ -1,10 +1,4 @@
 ---
-- name: Ensure architecture is supported by current version
-  assert:
-    that: thinlinc_version is version('4.14.0', '<=')
-    msg: "32-bit architecture not supported by this version"
-  when: ansible_architecture == 'i386'
-
 - name: Installing pre-requisites
   package:
     name: unzip
