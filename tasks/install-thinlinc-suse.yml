@@ -1,34 +1,15 @@
 ---
-- name: Locate 32-bit packages
-  find:
-    paths: "/root/tl-{{ thinlinc_version }}-server/packages"
-    patterns:
-      - "thinlinc*i686.rpm"
-      - "thinlinc*noarch.rpm"
-  when: ansible_architecture == 'i386'
-  register: _packages_32bit
-
-- name: Locate 64-bit packages
+- name: Locate server packages
   find:
     paths: "/root/tl-{{ thinlinc_version }}-server/packages"
     patterns:
       - "thinlinc*x86_64.rpm"
       - "thinlinc*noarch.rpm"
-  when: ansible_architecture == 'x86_64'
-  register: _packages_64bit
+  register: _packages
 
-- name: Install 32-bit ThinLinc Software
+- name: Install ThinLinc Software
   zypper:
-    name: "{{ _packages_32bit.files | map(attribute='path') | list }}"
+    name: "{{ _packages.files | map(attribute='path') | list }}"
     state: present
     disable_gpg_check: true
-  when: _packages_32bit is not skipped
-  notify: run tl-setup
-
-- name: Install 64-bit ThinLinc Software
-  zypper:
-    name: "{{ _packages_64bit.files | map(attribute='path') | list }}"
-    state: present
-    disable_gpg_check: true
-  when: _packages_64bit is not skipped
   notify: run tl-setup
