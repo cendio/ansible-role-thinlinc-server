@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated to 4.20.0
-- Update SUSE usr merge workaround to match SLES 16 changes
+- Updated SUSE usr merge workaround to match SLES 16 changes
+- Updated tlsetup answers to match the 4.20.0 changes
 
 ### Removed
 
