@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update SUSE usr merge workaround to match SLES 16 changes
+
 ### Removed
 
 - Support for 32-bit server packages
