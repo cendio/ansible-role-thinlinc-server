@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated to 4.20.0
 - Updated SUSE usr merge workaround to match SLES 16 changes
 - Updated tlsetup answers to match the 4.20.0 changes
+- It is now possible to specify multiple email addresses for license warnings
 
 ### Removed
 

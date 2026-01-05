@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 install-gtk={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
-email-address={{ thinlinc_email }}
+email-address={{ thinlinc_emails }}
 install-python-ldap={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
 agent-hostname-choice={{ thinlinc_hostname_choice }}
 manual-agent-hostname={{ thinlinc_manual_agent_hostname }}
