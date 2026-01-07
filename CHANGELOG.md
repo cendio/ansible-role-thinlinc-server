@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.15] - 2026-01-07
+
+### Changed
+
 - thinlinc_emails is now a YAML list instead of a space-separated string
 
 ## [1.14] - 2026-01-05
@@ -140,7 +144,8 @@ First release.
 
 - An Ansible role to install the ThinLinc server software.
 
-[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.14...HEAD
+[unreleased]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.15...HEAD
+[1.15]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.14...v1.15
 [1.14]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.13...v1.14
 [1.13]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.12...v1.13
 [1.12]: https://github.com/cendio/ansible-role-thinlinc-server/compare/v1.11...v1.12
