@@ -23,9 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - Support for 32-bit server packages
-
-### Removed
-
 - Old web integration tlsetup answer
 
 ## [1.13] - 2025-07-09
