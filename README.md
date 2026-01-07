@@ -57,11 +57,11 @@ dependencies along with the ThinLinc software. If set to "no", the
 role assumes that you will take care of it.
 
 ```yaml
-thinlinc_emails: "root@localhost"
+thinlinc_emails:
+  - "root@localhost"
 ```
 
-Administrative email addresses to receive license warnings. Multiple
-addresses are separated by spaces.
+A list of administrative email addresses to receive license warnings.
 
 ```yaml
 thinlinc_printers: "yes"

@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- thinlinc_emails is now a YAML list instead of a space-separated string
+
 ## [1.14] - 2026-01-05
 
 ### Changed
