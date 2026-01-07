@@ -36,7 +36,7 @@ ThinLinc End User License Agreement. NOTE: Setting this to yes is a
 requirement for installing and using ThinLinc.
 
 ```yaml
-thinlinc_version: "4.19.0"
+thinlinc_version: "4.20.0"
 ```
 
 ThinLinc version number.
@@ -57,10 +57,11 @@ dependencies along with the ThinLinc software. If set to "no", the
 role assumes that you will take care of it.
 
 ```yaml
-thinlinc_email: "root@localhost"
+thinlinc_emails: "root@localhost"
 ```
 
-Administrative email address to receive license warnings.
+Administrative email addresses to receive license warnings. Multiple
+addresses are separated by spaces.
 
 ```yaml
 thinlinc_printers: "yes"

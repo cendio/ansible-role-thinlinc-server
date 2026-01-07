@@ -1,12 +1,15 @@
 # {{ ansible_managed }}
 install-gtk={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
-email-address={{ thinlinc_email }}
+email-address={{ thinlinc_emails }}
 install-python-ldap={{ thinlinc_autoinstall_dependencies | ternary('yes', 'no', 'no') }}
 agent-hostname-choice={{ thinlinc_hostname_choice }}
 manual-agent-hostname={{ thinlinc_manual_agent_hostname }}
-setup-firewall=yes
+setup-firewall-ssh=yes
+setup-firewall-tlwebaccess=yes
+setup-firewall-tlwebadm=yes
+setup-firewall-tlmaster=yes
+setup-firewall-tlagent=yes
 setup-selinux=yes
-setup-web-integration=yes
 setup-apparmor=yes
 {% if 'thinlinc_masters' in group_names %}
 server-type=master
