@@ -75,7 +75,7 @@ thinlinc_webaccess_port: 443
 
 The port on which the ThinLinc Web Access service listens on. See
 [the documentation for this
-parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_webaccess.html#server-config-webaccess-listen_port).
+parameter](https://www.cendio.com/resources/docs/tag/config_webaccess.html#server-config-webaccess-listen_port).
 
 ```yaml
 thinlinc_webaccess_login_page: "tl-master-01.example.com"
@@ -83,7 +83,7 @@ thinlinc_webaccess_login_page: "tl-master-01.example.com"
 
 The URL to the login page of ThinLinc Web Access on the master server.
 See [the documentation for this
-parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_webaccess.html#server-config-webaccess-login_page).
+parameter](https://www.cendio.com/resources/docs/tag/config_webaccess.html#server-config-webaccess-login_page).
 
 ```yaml
 thinlinc_webadm_port: 1010
@@ -91,7 +91,7 @@ thinlinc_webadm_port: 1010
 
 The port on which the ThinLinc Web Administration service listens on. See
 [the documentation for this
-parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_tlwebadm.html#server-config-tlwebadm-listen_port).
+parameter](https://www.cendio.com/resources/docs/tag/config_tlwebadm.html#server-config-tlwebadm-listen_port).
 
 ```yaml
 thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5ZlabkZGj0nYXh0IaxaiYucsDD.fGJ5sNPthWf63pXkCn9Nu0ua2Ye1"
@@ -100,7 +100,7 @@ thinlinc_webadm_password: "$6$7cc31a35e02e55ec$hm.1MsloeBJqNKljx9RH88Z/eRKZCka5Z
 ThinLinc Web Administration password. This default password is
 "thinlinc". Generate new hashes with `/opt/thinlinc/sbin/tl-gen-auth`.
 See [the documentation for this
-parameter](https://www.cendio.com/resources/docs/tag-devel/html/config_tlwebadm.html#server-config-tlwebadm-password).
+parameter](https://www.cendio.com/resources/docs/tag/config_tlwebadm.html#server-config-tlwebadm-password).
 
 ```yaml
 thinlinc_agent_hostname: null
@@ -108,7 +108,7 @@ thinlinc_agent_hostname: null
 
 This allows you to modify the hostname reported by the agent server to
 the client on connecting. See [ThinLinc in a NAT/Split-DNS
-Environment](https://www.cendio.com/resources/docs/tag/network.html#network_nat)
+Environment](https://www.cendio.com/resources/docs/tag/network.html#network-nat)
 for details. 
 
 Setting `thinlinc_agent_hostname` to null sets this parameter to `ansible_fqdn`.
