@@ -1,24 +1,25 @@
 ---
-# handlers file for thinlinc-server
-- name: restart vsmagent
-  service:
+# handlers file for thinlinc_server
+- name: Restart vsmagent
+  ansible.builtin.service:
     name: vsmagent
     state: restarted
 
-- name: restart vsmserver
-  service:
+- name: Restart vsmserver
+  ansible.builtin.service:
     name: vsmserver
     state: restarted
 
-- name: restart tlwebadm
-  service:
+- name: Restart tlwebadm
+  ansible.builtin.service:
     name: tlwebadm
     state: restarted
 
-- name: restart tlwebaccess
-  service:
+- name: Restart tlwebaccess
+  ansible.builtin.service:
     name: tlwebaccess
     state: restarted
 
-- name: run tl-setup
-  command: /opt/thinlinc/sbin/tl-setup -a "/root/thinlinc-setup.answers"
+# Sometimes we need to force a rerun of the setup, therefore this command must run every time.
+- name: Run tl-setup
+  ansible.builtin.command: /opt/thinlinc/sbin/tl-setup -a "/root/thinlinc-setup.answers" # noqa: no-changed-when

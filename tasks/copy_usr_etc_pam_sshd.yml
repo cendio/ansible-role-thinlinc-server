@@ -1,32 +1,33 @@
 ---
-
 - name: Check /etc/pam.d/sshd
-  stat:
+  ansible.builtin.stat:
     path: /etc/pam.d/sshd
   register: etc_pam_sshd
 
-- block:
+- name: Copy to correct location
+  when: not etc_pam_sshd.stat.exists
+  block:
     - name: Check /usr/etc/pam.d/sshd
-      stat:
+      ansible.builtin.stat:
         path: /usr/etc/pam.d/sshd
       register: locate_pam_sshd
 
     - name: Check /usr/lib/pam.d/sshd
-      stat:
+      ansible.builtin.stat:
         path: /usr/lib/pam.d/sshd
       register: locate_pam_sshd
-      when: locate_pam_sshd.stat.exists is defined
-            and not locate_pam_sshd.stat.exists
+      when:
+        - locate_pam_sshd.stat.exists is defined
+        - not locate_pam_sshd.stat.exists
 
     - name: Copy located pam.d/sshd to /etc/pam.d/sshd
-      copy:
+      ansible.builtin.copy:
         src: "{{ locate_pam_sshd.stat.path }}"
         dest: /etc/pam.d/sshd
         owner: root
         group: root
-        mode: '0644'
+        mode: "0644"
         remote_src: true
-      when: locate_pam_sshd.stat.exists is defined
-            and locate_pam_sshd.stat.exists == true
-
-  when: etc_pam_sshd.stat.exists == false
+      when:
+        - locate_pam_sshd.stat.exists is defined
+        - locate_pam_sshd.stat.exists is true

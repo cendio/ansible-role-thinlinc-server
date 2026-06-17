@@ -1,6 +1,6 @@
 ---
 - name: Locate server packages
-  find:
+  ansible.builtin.find:
     paths: "/root/tl-{{ thinlinc_version }}-server/packages"
     patterns:
       - "thinlinc*x86_64.rpm"
@@ -8,7 +8,7 @@
   register: _packages
 
 - name: Install ThinLinc Software
-  yum:
+  ansible.builtin.dnf:
     name: "{{ _packages.files | map(attribute='path') | list }}"
     state: present
     disable_gpg_check: true

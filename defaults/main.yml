@@ -1,15 +1,15 @@
 ---
-# defaults file for thinlinc-server
+# defaults file for thinlinc_server
 
-thinlinc_accept_eula: "no"
+thinlinc_accept_eula: false
 
 thinlinc_version: "4.20.1"
 thinlinc_bundle_path: "tl-{{ thinlinc_version }}-server.zip"
 
-thinlinc_autoinstall_dependencies: "yes"
+thinlinc_autoinstall_dependencies: true
 
 thinlinc_email: "root@localhost"
-thinlinc_printers: "yes"
+thinlinc_printers: true
 
 # The port on which the tlwebaccess service should listen
 thinlinc_webaccess_port: 300
@@ -32,7 +32,6 @@ thinlinc_tlsetup_migrate_conf: "old"
 
 thinlinc_hostname_choice: "ip"
 thinlinc_manual_agent_hostname: ""
-
 
 # The agent hostname to report to clients. If your server is behind a
 # firewall with NAT, this must be set to an address that forwards to

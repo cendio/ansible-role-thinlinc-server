@@ -28,7 +28,7 @@ Role Variables
 --------------
 
 ```yaml
-thinlinc_accept_eula: "no"
+thinlinc_accept_eula: false
 ```
 
 By changing this to "yes", you agree to the terms specified in the
@@ -49,7 +49,7 @@ The location of the ThinLinc Server Bundle to install. If not set, the
 default Ansible search paths and bundle filename will be used.
 
 ```yaml
-thinlinc_autoinstall_dependencies: "yes"
+thinlinc_autoinstall_dependencies: true
 ```
 
 When set to "yes", this will automatically install any required
@@ -64,7 +64,7 @@ thinlinc_emails:
 A list of administrative email addresses to receive license warnings.
 
 ```yaml
-thinlinc_printers: "yes"
+thinlinc_printers: true
 ```
 
 Whether to install the optional CUPS printer queues for ThinLinc.
@@ -125,7 +125,7 @@ requirements.yml` to install the role:
 ---
 - src: https:///github.com/cendio/ansible-role-thinlinc-server.git
   scm: git
-  name: thinlinc-server
+  name: thinlinc_server
   version: v1.10
 ```
 
@@ -148,13 +148,14 @@ thinlinc_agents
 ```
 
 Now that we got both a role and an inventory, connect the dots by
-applying the thinlinc-server role to the thinlinc_servers group with a
+applying the thinlinc_server role to the thinlinc_servers group with a
 `thinlinc.yml` playbook:
 
 ```yaml
 - hosts: thinlinc_servers
   roles:
-    - { role: thinlinc-server, thinlinc_accept_eula: "yes" }
+    - role: thinlinc_server
+      thinlinc_accept_eula: true
 ```
 
 The final step is to apply the playbook to the inventory, like this:

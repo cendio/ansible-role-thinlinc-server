@@ -1,6 +1,6 @@
 ---
 - name: Locate server packages
-  find:
+  ansible.builtin.find:
     paths: "/root/tl-{{ thinlinc_version }}-server/packages"
     patterns:
       - "thinlinc*amd64.deb"
@@ -11,12 +11,12 @@
 # clever enough to handle our upgrades:
 # https://github.com/ansible/ansible/issues/77150
 #
-- name: Install ThinLinc Software
-  command: >
-      /usr/bin/apt-get install -y
-      -o Dpkg::Options::="--no-debsig"
-      -o Dpkg::Options::="--force-confold"
-      {{ _packages.files | map(attribute='path') | join(' ') }}
+- name: Install ThinLinc Software # noqa: command-instead-of-module no-changed-when
+  ansible.builtin.command: >
+    /usr/bin/apt-get install -y
+    -o Dpkg::Options::="--no-debsig"
+    -o Dpkg::Options::="--force-confold"
+    {{ _packages.files | map(attribute='path') | join(' ') }}
   environment:
     DEBIAN_FRONTEND: noninteractive
   notify: run tl-setup
