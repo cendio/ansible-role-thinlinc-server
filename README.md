@@ -113,6 +113,13 @@ for details.
 
 Setting `thinlinc_agent_hostname` to null sets this parameter to `ansible_fqdn`.
 
+```yaml
+thinlinc_master_hostname: ""
+```
+
+The hostname of the ThinLinc master server, required to be set when
+setting up an agent-only node.
+
 
 Examples
 --------

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated to 4.21.0
+- Added `master-hostname` tl-setup answer, required when setting up an agent-only node
 
 ## [1.16] - 2026-04-27
 

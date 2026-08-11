@@ -33,6 +33,10 @@ thinlinc_tlsetup_migrate_conf: "old"
 thinlinc_hostname_choice: "ip"
 thinlinc_manual_agent_hostname: ""
 
+# The hostname of the ThinLinc master server. Required by tl-setup when
+# setting up an agent-only node.
+thinlinc_master_hostname: ""
+
 
 # The agent hostname to report to clients. If your server is behind a
 # firewall with NAT, this must be set to an address that forwards to
