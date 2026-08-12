@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated to 4.21.0
 - Added `master-hostname` tl-setup answer, required when setting up an agent-only node
+- Fixed `thinlinc_emails` default variable, which was still named
+  `thinlinc_email` in `defaults/main.yml`, so the default admin email
+  address was silently never applied
 
 ## [1.16] - 2026-04-27
 

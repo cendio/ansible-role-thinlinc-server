@@ -8,7 +8,8 @@ thinlinc_bundle_path: "tl-{{ thinlinc_version }}-server.zip"
 
 thinlinc_autoinstall_dependencies: "yes"
 
-thinlinc_email: "root@localhost"
+thinlinc_emails:
+  - "root@localhost"
 thinlinc_printers: "yes"
 
 # The port on which the tlwebaccess service should listen
