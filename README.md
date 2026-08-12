@@ -36,7 +36,7 @@ ThinLinc End User License Agreement. NOTE: Setting this to yes is a
 requirement for installing and using ThinLinc.
 
 ```yaml
-thinlinc_version: "4.20.1"
+thinlinc_version: "4.21.0"
 ```
 
 ThinLinc version number.
@@ -112,6 +112,13 @@ Environment](https://www.cendio.com/resources/docs/tag/network.html#network-nat)
 for details. 
 
 Setting `thinlinc_agent_hostname` to null sets this parameter to `ansible_fqdn`.
+
+```yaml
+thinlinc_master_hostname: ""
+```
+
+The hostname of the ThinLinc master server, required to be set when
+setting up an agent-only node.
 
 
 Examples
