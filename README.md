@@ -21,7 +21,7 @@ Pull requests and issues are welcome.
 Requirements
 ------------
 
- - [ThinLinc Server requirements](https://www.cendio.com/resources/docs/tag/requirements_server.html) - but see `thinlinc-autoinstall-dependencies` below.
+ - [ThinLinc Server requirements](https://www.cendio.com/resources/docs/tag/requirements_server.html) - but see `thinlinc_autoinstall_dependencies` below.
 
 
 Role Variables
@@ -130,10 +130,10 @@ requirements.yml` to install the role:
 
 ```yml
 ---
-- src: https:///github.com/cendio/ansible-role-thinlinc-server.git
+- src: https://github.com/cendio/ansible-role-thinlinc-server.git
   scm: git
   name: thinlinc-server
-  version: v1.10
+  version: v1.17
 ```
 
 The role uses three groups - thinlinc_masters, thinlinc_agents and
